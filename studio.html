@@ -1,0 +1,37 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Studio – KAVIX</title>
+<link rel="icon" href="assets/logo.svg" type="image/svg+xml">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:wght@600;800&family=Figtree:wght@400;600;700&display=swap">
+<link rel="stylesheet" href="css/theme.css">
+</head>
+<body>
+<header class="top"><div class="wrap">
+  <a class="brand" href="index.html"><img src="assets/logo.svg" alt="">KAVIX</a>
+  <nav class="main" aria-label="Main"><a href="index.html">Games</a><a href="studio.html" aria-current="page">Studio</a><a href="avatar.html">Avatar</a></nav>
+</div></header>
+<main class="studio">
+  <div class="viewport" id="viewport"><canvas id="cv" aria-label="Map editor. Tap a spot to use the selected tool."></canvas>
+    <div class="tools" role="toolbar" aria-label="Tools">
+      <button class="chip" data-tool="place" aria-pressed="true" type="button">Place</button><button class="chip" data-tool="erase" aria-pressed="false" type="button">Erase</button><button class="chip" data-tool="move" aria-pressed="false" type="button">Move</button><button class="chip" data-tool="spawn" aria-pressed="false" type="button">Spawn</button>
+      <button class="chip" id="undo" type="button">Undo</button><button class="chip" id="redo" type="button">Redo</button>
+    </div>
+  </div>
+  <aside class="side">
+    <label for="name">Map name</label><input id="name" maxlength="32" autocomplete="off" value="My first map">
+    <fieldset><legend>Block color</legend><div class="pal" id="pal" role="radiogroup" aria-label="Block color"></div></fieldset>
+    <fieldset><legend>Sky</legend><div class="pal" id="skies" role="radiogroup" aria-label="Sky"></div></fieldset>
+    <p class="note" id="count"></p>
+    <div class="actions"><button class="btn" id="save" type="button">Save</button><button class="btn ghost" id="pub" type="button">Publish</button><button class="btn ghost" id="test" type="button">Test play</button></div>
+    <p class="note" id="status" role="status"></p>
+    <h2>My maps</h2><ul class="maps" id="maps"></ul><button class="btn ghost" id="new" type="button">New map</button>
+    <p class="note">Tap or click to use the tool. Drag to look around. Scroll or pinch to zoom. To move a block, pick Move, tap the block, then tap where it goes.</p>
+  </aside>
+</main>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
+<script src="js/api.js"></script><script src="js/maps.js"></script><script src="js/studio.js"></script>
+</body>
+</html>

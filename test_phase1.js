@@ -1,0 +1,11 @@
+const K = require('../js/store.js'), assert = require('assert');
+assert.strictEqual(K.formatCount(999), '999'); assert.strictEqual(K.formatCount(1500), '1.5K'); assert.strictEqual(K.formatCount(2000000), '2M');
+assert.strictEqual(K.filterGames(K.GAMES, '', 'all').length, K.GAMES.length);
+assert.deepStrictEqual(K.filterGames(K.GAMES, '', 'obby').map(g => g.id), ['sky-hop', 'lava-climb']);
+assert.strictEqual(K.filterGames(K.GAMES, 'NORA', 'all')[0].id, 'sky-hop');
+assert.strictEqual(K.filterGames(K.GAMES, 'zzz', 'all').length, 0);
+assert.strictEqual(K.filterGames(K.GAMES, 'tag', 'racing').length, 0);
+K.GAMES.forEach(g => { const s = K.thumb(g); assert.strictEqual(s, K.thumb(g)); assert(s.startsWith('<svg') && s.endsWith('</svg>')); assert(!/NaN|undefined/.test(s)); });
+assert(!/NaN|undefined/.test(K.hero()));
+assert.strictEqual(K.shade('#FFFFFF', .5), '#808080');
+console.log('Phase 1 logic tests passed:', K.GAMES.length, 'games');

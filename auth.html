@@ -1,0 +1,35 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Sign in – KAVIX</title>
+<link rel="icon" href="assets/logo.svg" type="image/svg+xml">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:wght@600;800&family=Figtree:wght@400;600;700&display=swap">
+<link rel="stylesheet" href="css/theme.css">
+</head>
+<body>
+<header class="top"><div class="wrap"><a class="brand" href="index.html"><img src="assets/logo.svg" alt="">KAVIX</a></div></header>
+<main class="wrap auth">
+  <div id="art" class="auth-art"></div>
+  <section class="panel" aria-labelledby="t">
+    <h1 id="t">Join the build</h1>
+    <div class="tabs" role="tablist"><button class="tab" role="tab" data-mode="login" aria-selected="true">Sign in</button><button class="tab" role="tab" data-mode="signup" aria-selected="false">Create account</button></div>
+    <form id="form" novalidate>
+      <label for="name">Username</label>
+      <input id="name" name="username" autocomplete="username" autocapitalize="none" spellcheck="false" maxlength="16" required>
+      <label for="pw">Password</label>
+      <input id="pw" name="password" type="password" autocomplete="current-password" required>
+      <label class="check"><input type="checkbox" id="show"> Show password</label>
+      <p class="hint" id="hint" hidden>Username: 3–16 letters, numbers or underscores. Password: 8 or more characters.</p>
+      <p class="err" id="err" role="alert"></p>
+      <button class="btn" id="go" type="submit">Sign in</button>
+    </form>
+    <p class="note">Accounts are stored in this browser only for now. A real server comes with online play.</p>
+  </section>
+</main>
+<script src="js/store.js"></script>
+<script src="js/api.js"></script>
+<script src="js/auth.js"></script>
+</body>
+</html>

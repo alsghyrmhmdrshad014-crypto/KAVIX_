@@ -1,0 +1,43 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>KAVIX – Build worlds. Play together.</title>
+<meta name="description" content="KAVIX is a 3D block-building games platform. Discover games, build your own, share them.">
+<link rel="icon" href="assets/logo.svg" type="image/svg+xml">
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:wght@600;800&family=Figtree:wght@400;600;700&display=swap">
+<link rel="stylesheet" href="css/theme.css">
+</head>
+<body>
+<header class="top"><div class="wrap">
+  <a class="brand" href="index.html"><img src="assets/logo.svg" alt="">KAVIX</a>
+  <nav class="main" aria-label="Main"><a href="index.html" aria-current="page">Games</a><a href="studio.html">Studio</a><a href="avatar.html">Avatar</a></nav>
+  <span class="spacer"></span>
+  <span id="who" class="who"></span>
+</div></header>
+<main class="wrap">
+  <section class="hero">
+    <div>
+      <h1>Build a world. Share it in a click.</h1>
+      <p class="lead">KAVIX is where block builders make games and friends drop in to play them.</p>
+      <div class="cta"><a class="btn" href="#games">Browse games</a><a class="btn ghost" href="studio.html">Open the Studio</a></div>
+    </div>
+    <div id="hero-art"></div>
+  </section>
+  <section id="games" aria-labelledby="gh">
+    <div class="bar"><h2 id="gh">Games</h2><span class="count" id="count" aria-live="polite"></span><span class="spacer"></span>
+      <input id="search" type="search" placeholder="Search games or creators" aria-label="Search games"></div>
+    <div id="chips" role="tablist" aria-label="Filter by genre"></div>
+    <div id="grid"></div>
+  </section>
+</main>
+<footer><div class="wrap">KAVIX is an original platform. Sample games shown here are placeholders.</div></footer>
+<div id="toast" role="status"></div>
+<script src="js/store.js"></script>
+<script src="js/api.js"></script>
+<script src="js/maps.js"></script>
+<script src="js/home.js"></script>
+</body>
+</html>

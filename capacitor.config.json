@@ -1,0 +1,6 @@
+{
+  "appId": "com.kavix.game",
+  "appName": "KAVIX",
+  "webDir": "www",
+  "bundledWebRuntime": false
+}

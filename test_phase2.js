@@ -1,0 +1,24 @@
+const assert = require('assert'), A = require('../js/api.js');
+const mem = {}; A.setStorage({ getItem: k => (k in mem ? mem[k] : null), setItem: (k, v) => { mem[k] = String(v); }, removeItem: k => { delete mem[k]; } });
+const rej = async (p, re) => { try { await p; } catch (e) { assert(re.test(e.message), e.message); return; } assert.fail('should reject'); };
+(async () => {
+  assert.strictEqual(A.validate('ab', 'password1') !== null, true);
+  assert.strictEqual(A.validate('bad name', 'password1') !== null, true);
+  assert.strictEqual(A.validate('Nora_9', 'short') !== null, true);
+  assert.strictEqual(A.validate('Nora_9', 'longenough'), null);
+  assert.strictEqual(A.me(), null);
+  const u = await A.signup('Nora_9', 'longenough'); assert.strictEqual(u.name, 'Nora_9');
+  assert.strictEqual(A.me().name, 'Nora_9');
+  assert(!JSON.stringify(mem).includes('longenough'), 'plain password must not be stored');
+  await rej(A.signup('nora_9', 'otherpass1'), /taken/);
+  A.logout(); assert.strictEqual(A.me(), null);
+  await rej(A.login('Nora_9', 'wrongpass1'), /Wrong/);
+  await rej(A.login('ghost', 'whatever12'), /Wrong/);
+  assert.strictEqual((await A.login('NORA_9', 'longenough')).name, 'Nora_9');
+  A.logout();
+  for (let i = 0; i < 5; i++) await rej(A.login('Nora_9', 'bad' + i + 'xxxxx'), /Wrong/);
+  await rej(A.login('Nora_9', 'longenough'), /Too many/);
+  const real = Date.now; Date.now = () => real() + 31000;
+  assert.strictEqual((await A.login('Nora_9', 'longenough')).name, 'Nora_9'); Date.now = real;
+  console.log('Phase 2 account tests passed');
+})().catch(e => { console.error(e); process.exit(1); });
